@@ -25,6 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import init.target.rc
 import init.qcom.usb.rc
 
 on init
@@ -394,10 +395,10 @@ service quipc_main /system/bin/quipc_main
     group net_admin wifi inet gps
     disabled
 
-service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
+service fm_dl /system/bin/setprop hw.fm.init 1
     class late_start
     user root
-    group system qcom_oncrpc
+    group system fm_radio
     disabled
     oneshot
 
@@ -439,8 +440,8 @@ on property:sys.boot_completed=1
     write /sys/module/pm_8x60/modes/cpu1/power_collapse/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu0/standalone_power_collapse/idle_enabled 1
     write /sys/module/pm_8x60/modes/cpu1/standalone_power_collapse/idle_enabled 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "ondemand"
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq "384000"
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq "384000"

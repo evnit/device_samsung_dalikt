@@ -41,7 +41,7 @@ COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # CMHW
-BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/msm8660-common/cmhw
 
 # Charger
 BOARD_BATTERY_DEVICE_NAME := "battery"
@@ -95,14 +95,18 @@ BOARD_SEPOLICY_DIRS += \
     device/samsung/msm8660-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
+    app.te \
     bluetooth.te \
     bootanim.te \
     device.te \
+    domain.te \
+    drmserver.te \
     file.te \
     file_contexts \
+    healthd.te \
+    init.te \
     gamma_dev.te \
     genfs_contexts \
-    hostapd.te \
     init_shell.te \
     kernel.te \
     keypad_dev.te \
@@ -110,13 +114,14 @@ BOARD_SEPOLICY_UNION += \
     mediaserver.te \
     mm-qcamerad.te \
     mpdecision.te \
-    netd.te \
     netmgrd.te \
     orientationd.te \
     panel_dev.te \
     platform_app.te \
     power_dev.te \
+    property_contexts \
     qmuxd.te \
+    recovery.te \
     rild.te \
     rmt_storage.te \
     surfaceflinger.te \
@@ -124,8 +129,11 @@ BOARD_SEPOLICY_UNION += \
     system_app.te \
     system_server.te \
     thermal-engine.te \
+    thermald.te \
     ueventd.te \
+    untrusted_app.te \
     vold.te \
+    wpa_socket.te \
     wpa.te
 
 # Wifi related defines

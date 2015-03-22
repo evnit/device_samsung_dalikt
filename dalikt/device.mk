@@ -22,8 +22,7 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/dalikt/overlay
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    device/samsung/dalikt/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc \
-    device/samsung/dalikt/ramdisk/init.recovery.qcom.rc:root/init.recovery.qcom.rc
+    device/samsung/dalikt/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc
 
 # BT firmware
 PRODUCT_COPY_FILES += \

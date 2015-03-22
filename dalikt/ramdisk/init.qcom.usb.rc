@@ -28,11 +28,6 @@
 on init
     write /sys/class/android_usb/android0/f_rndis/wceis 1
 
-service qcom-usb-sh /system/bin/sh /init.qcom.usb.sh
-    class core
-    user root
-    oneshot
-
 on boot
     write /sys/class/android_usb/android0/iManufacturer $ro.manufacturer
     write /sys/class/android_usb/android0/iProduct $ro.model
@@ -447,4 +442,12 @@ on property:sys.usb.config=diag,diag_mdm,ccid,adb
     write /sys/class/android_usb/android0/functions diag,adb,ccid
     write /sys/class/android_usb/android0/enable 1
     start adbd
+    setprop sys.usb.state $sys.usb.config
+
+on property:sys.usb.config=charging
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 18d1
+    write /sys/class/android_usb/android0/idProduct 4e21
+    write /sys/class/android_usb/android0/functions charging
+    write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state $sys.usb.config
