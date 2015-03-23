@@ -191,7 +191,8 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
+    com.android.future.usb.accessory \
+    persist.sys.isUsbOtgEnabled=true
 
 # Wifi
 PRODUCT_PACKAGES += \
