@@ -68,5 +68,7 @@ TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/platform/dungphp/temp_input"
 TARGET_RECOVERY_INITRC := device/samsung/dalikt/ramdisk/init.rc
+# Recovery
+TARGET_RECOVERY_FSTAB := device/samsung/dalikt/ramdisk/fstab.qcom
 
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/dalikt/bluetooth

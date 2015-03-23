@@ -24,6 +24,7 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/dalikt/overlay
 PRODUCT_COPY_FILES += \
     device/samsung/dalikt/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc
 
+# Recovery
 PRODUCT_COPY_FILES += \
     device/samsung/dalikt/ramdisk/recovery.fstab:recovery/root/etc/twrp.fstab \
     device/samsung/dalikt/ramdisk/recovery.fstab:recovery/root/etc/recovery.fstab
