@@ -24,6 +24,10 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/dalikt/overlay
 PRODUCT_COPY_FILES += \
     device/samsung/dalikt/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc
 
+PRODUCT_COPY_FILES += \
+    device/samsung/dalikt/ramdisk/recovery.fstab:recovery/root/etc/twrp.fstab \
+    device/samsung/dalikt/ramdisk/recovery.fstab:recovery/root/etc/recovery.fstab
+
 # BT firmware
 PRODUCT_COPY_FILES += \
     device/samsung/dalikt/firmware/bcm4330B1.hcd:system/etc/firmware/bcm4330B1.hcd
