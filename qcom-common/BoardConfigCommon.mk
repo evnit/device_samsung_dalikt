@@ -24,7 +24,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 # Charger
 BOARD_CHARGER_RES := device/samsung/qcom-common/charger
 # CMHW
-# BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
+BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 # Graphics
 USE_OPENGL_RENDERER := true
 TARGET_USES_C2D_COMPOSITION := true
@@ -36,3 +36,5 @@ BOARD_USES_QCOM_HARDWARE := true
 # Recovery
 TARGET_RECOVERY_DEVICE_DIRS += device/samsung/qcom-common
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+# BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/msm8660-common/recovery/graphics.c
+TARGET_RECOVERY_FSTAB := device/samsung/qcom-common/recovery/root/etc/recovery.fstab
