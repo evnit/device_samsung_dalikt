@@ -13,3 +13,4 @@ TARGET_SCREEN_WIDTH := 720
 
 PRODUCT_NAME := cm_dalikt
 PRODUCT_DEVICE := dalikt
+

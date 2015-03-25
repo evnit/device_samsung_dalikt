@@ -35,7 +35,6 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.qcom
 BOARD_USES_QCOM_HARDWARE := true
 # Recovery
 TARGET_RECOVERY_DEVICE_DIRS += device/samsung/qcom-common
-# TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
-# BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/msm8660-common/recovery/graphics.c
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_CUSTOM_GRAPHICS := device/samsung/qcom-common/recovery/graphics.c
 TARGET_RECOVERY_FSTAB := device/samsung/qcom-common/recovery/root/etc/recovery.fstab

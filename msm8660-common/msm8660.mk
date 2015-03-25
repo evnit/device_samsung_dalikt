@@ -77,6 +77,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    fstab.msm8660 \
     init.qcom.efs.sync.sh \
     init.qcom.mdm_links.sh \
     init.qcom.modem_links.sh \
@@ -187,8 +188,7 @@ PRODUCT_PACKAGES += \
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8660
-			
-
+		
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
