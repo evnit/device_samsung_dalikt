@@ -30,7 +30,8 @@ PRODUCT_COPY_FILES += \
 
 # Needed for vibrator to work in recovery
 PRODUCT_COPY_FILES += \
-	device/samsung/dalikt/recovery/root/init.recovery.qcom.rc:recovery/root/init.recovery.qcom.rc
+	device/samsung/dalikt/root/init.recovery.qcom.rc:recovery/root/init.recovery.qcom.rc \
+	device/samsung/dalikt/root/init.recovery.dalikt.rc:recovery/root/init.recovery.dalikt.rc
 
 # Inherit from celox-common
 $(call inherit-product, device/samsung/celox-common/celox-common.mk)
