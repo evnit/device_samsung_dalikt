@@ -38,3 +38,7 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     e2fsck \
     setup_fs
+
+# Needed for vibrator to work in recovery
+PRODUCT_COPY_FILES += \
+    device/samsung/qcom-common/recovery/root/init.recovery.qcom.rc:root/init.recovery.qcom.rc

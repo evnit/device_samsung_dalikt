@@ -28,15 +28,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/dalikt/firmware/bcm4330B1.hcd:system/etc/firmware/bcm4330B1.hcd
 
-# Needed for vibrator to work in recovery
-PRODUCT_COPY_FILES += \
-	device/samsung/dalikt/root/init.recovery.qcom.rc:recovery/root/init.recovery.qcom.rc \
-	device/samsung/dalikt/root/init.recovery.dalikt.rc:recovery/root/init.recovery.dalikt.rc
-
 # Inherit from celox-common
 $(call inherit-product, device/samsung/celox-common/celox-common.mk)
 
-# Reset dimensions
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 

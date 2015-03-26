@@ -187,8 +187,7 @@ PRODUCT_PACKAGES += \
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8660
-			
-
+		
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
