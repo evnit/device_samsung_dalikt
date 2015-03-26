@@ -42,4 +42,5 @@ PRODUCT_PACKAGES += \
 # Needed for vibrator to work in recovery
 PRODUCT_COPY_FILES += \
     device/samsung/qcom-common/recovery/root/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
-    device/samsung/qcom-common/recovery/root/init.rc:recovery/root/init.rc
+    device/samsung/qcom-common/recovery/root/init.rc:recovery/root/init.rc \
+    device/samsung/qcom-common/recovery/root/etc/twrp.fstab:recovery/root/etc/twrp.fstab
