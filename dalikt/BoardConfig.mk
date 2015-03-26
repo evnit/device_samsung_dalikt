@@ -56,5 +56,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Recovery
 DEVICE_RESOLUTION := 720x1280
+TARGET_RECOVERY_FSTAB := device/samsung/dalikt/recovery.fstab
 
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/dalikt/bluetooth
