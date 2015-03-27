@@ -1,8 +1,16 @@
-/boot         emmc        /dev/block/mmcblk0p8
-/efs          ext4        /dev/block/mmcblk0p21  flags=display="EFS";backup=1
-/recovery     emmc        /dev/block/mmcblk0p22
-/data         ext4        /dev/block/mmcblk0p28
-/system       ext4        /dev/block/mmcblk0p25
-/cache        ext4        /dev/block/mmcblk0p24
-/external_sd  vfat        /dev/block/mmcblk1p1   /dev/block/mmcblk1   flags=display="Micro SDcard";storage;wipeingui;removable
-/preload      ext4        /dev/block/mmcblk0p27  flags=display="Preload";backup=1;wipeingui
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+#<src>                                              <mnt_point>         <type>  <mnt_flags and options>                                                  <fs_mgr_flags>
+/dev/block/mmcblk0p8                                /boot               emmc    defaults                                                                 recoveryonly
+/dev/block/mmcblk0p13                               /firmware           vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337                 wait
+/dev/block/mmcblk0p21                               /efs                ext4    nosuid,nodev,barrier=1                                                   wait
+/dev/block/mmcblk0p22                               /recovery           emmc    defaults                                                                 recoveryonly
+/dev/block/mmcblk0p24                               /system             ext4    ro,errors=panic                                                          wait
+/dev/block/mmcblk0p25                               /data               ext4    nosuid,nodev,noatime,noauto_da_alloc,errors=panic                        wait,check,encryptable=footer,length=-16384
+/dev/block/mmcblk0p26                               /cache              ext4    nosuid,nodev,barrier=1                                                   wait,check
+/dev/block/mmcblk0p27                               /preload            ext4    ro,barrier=1                                                             wait
+/devices/platform/msm_sdcc.1/mmc_host/mmc0/mmc0     /sdcard             auto    defaults                                                                 voldmanaged=sdcard0:28,nonremovable,noemulatedsd
+/devices/platform/msm_sdcc.3/mmc_host/mmc2/mmc2     /external_sd        auto    defaults                                                                 voldmanaged=sdcard1:auto,noemulatedsd
+/devices/platform/msm_hsusb_host.0                  /usbdisk            auto    defaults                                                                 voldmanaged=usbdisk:auto
