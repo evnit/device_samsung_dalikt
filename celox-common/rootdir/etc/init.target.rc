@@ -319,6 +319,10 @@ on boot
     chown system system /sys/class/timed_output/vibrator/enable
     chmod 0664 /sys/class/timed_output/vibrator/enable
 
+#exFAT module
+    insmod /system/lib/modules/exfat_core.ko
+    insmod /system/lib/modules/exfat_fs.ko
+
 # Services begin here
 
 service secril-daemon /system/bin/sec-ril
