@@ -33,7 +33,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     make_ext4fs \
     e2fsck \
-    setup_fs
+    setup_fs \
+    fsck.f2fs \
+    mkfs.f2fs
 
 # Needed for vibrator to work in recovery
 PRODUCT_COPY_FILES += \
