@@ -57,6 +57,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # Recovery
 DEVICE_RESOLUTION := 720x1280
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TARGET_RECOVERY_FSTAB := device/samsung/dalikt/recovery.fstab
 
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/dalikt/bluetooth
