@@ -60,7 +60,6 @@ import com.android.internal.telephony.uicc.IccCardStatus;
 public class SamsungMSM8660RIL extends RIL implements CommandsInterface {
 
     private AudioManager mAudioManager;
-    private Message mPendingGetSimStatus;
 
     private Object mSMSLock = new Object();
     private boolean mIsSendingSMS = false;
@@ -308,7 +307,8 @@ public class SamsungMSM8660RIL extends RIL implements CommandsInterface {
             int np = p.readInt();
             dc.numberPresentation = DriverCall.presentationFromCLIP(np);
             dc.name = p.readString();
-            dc.namePresentation = p.readInt();
+            // according to ril.h, namePresentation should be handled as numberPresentation;
+            dc.namePresentation = DriverCall.presentationFromCLIP(p.readInt());
             int uusInfoPresent = p.readInt();
             if (uusInfoPresent == 1) {
                 dc.uusInfo = new UUSInfo();
@@ -354,58 +354,87 @@ public class SamsungMSM8660RIL extends RIL implements CommandsInterface {
         return response;
     }
 
-    // Hack for Lollipop
-    // The system now queries for SIM status before radio on, resulting
-    // in getting an APPSTATE_DETECTED state. The RIL does not send an
-    // RIL_UNSOL_RESPONSE_SIM_STATUS_CHANGED message after the SIM is
-    // initialized, so delay the message until the radio is on.
-    @Override
-    public void
-    getIccCardStatus(Message result) {
-        if (mState != RadioState.RADIO_ON) {
-            mPendingGetSimStatus = result;
-        } else {
-            super.getIccCardStatus(result);
-        }
-    }
-
-    @Override
-    protected void switchToRadioState(RadioState newState) {
-        super.switchToRadioState(newState);
-
-        if (newState == RadioState.RADIO_ON && mPendingGetSimStatus != null) {
-            super.getIccCardStatus(mPendingGetSimStatus);
-            mPendingGetSimStatus = null;
-        }
-    }
-
     @Override
     protected void
     processUnsolicited (Parcel p) {
+        Object ret;
         int dataPosition = p.dataPosition();
         int origResponse = p.readInt();
         int newResponse = origResponse;
         switch (origResponse) {
+            case RIL_UNSOL_RIL_CONNECTED:
+                ret = responseInts(p);
+                if (SystemProperties.get("ril.socket.reset").equals("1")) {
+                    setRadioPower(false, null);
+                }
+                // Trigger socket reset if RIL connect is called again
+                SystemProperties.set("ril.socket.reset", "1");
+                setPreferredNetworkType(mPreferredNetworkType, null);
+                setCdmaSubscriptionSource(mCdmaSubscription, null);
+                if(mRilVersion >= 8)
+                    setCellInfoListRate(Integer.MAX_VALUE, null);
+                notifyRegistrantsRilConnectionChanged(((int[])ret)[0]);
+                break;
+            case RIL_UNSOL_NITZ_TIME_RECEIVED:
+                handleNitzTimeReceived(p);
+                break;
+            // SAMSUNG STATES
+            case 11010: // RIL_UNSOL_AM:
+                ret = responseString(p);
+                String amString = (String) ret;
+                Rlog.d(RILJ_LOG_TAG, "Executing AM: " + amString);
+
+                try {
+                    Runtime.getRuntime().exec("am " + amString);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Rlog.e(RILJ_LOG_TAG, "am " + amString + " could not be executed.");
+                }
+                break;
+            case 11021: // RIL_UNSOL_RESPONSE_HANDOVER:
+                ret = responseVoid(p);
+                break;
             case 1036:
-                newResponse = RIL_UNSOL_RESPONSE_IMS_NETWORK_STATE_CHANGED;
+                ret = responseVoid(p);
+                break;
+            case 11017: // RIL_UNSOL_WB_AMR_STATE:
+                ret = responseInts(p);
+                setWbAmr(((int[])ret)[0]);
+                break;
+            // Remap
+            case 1039:
+                newResponse = RIL_UNSOL_ON_SS;
+                break;
+            case 1040:
+                newResponse = RIL_UNSOL_STK_CC_ALPHA_NOTIFY;
+                break;
+            case 1041:
+                newResponse = RIL_UNSOL_UICC_SUBSCRIPTION_STATUS_CHANGED;
                 break;
             case 1037: // RIL_UNSOL_TETHERED_MODE_STATE_CHANGED
             case 1038: // RIL_UNSOL_DATA_NETWORK_STATE_CHANGED
-            case 1039: // RIL_UNSOL_ON_SS
-            case 1040: // RIL_UNSOL_STK_CC_ALPHA_NOTIFY
             case 1042: // RIL_UNSOL_QOS_STATE_CHANGED_IND
                 riljLog("SamsungMSM8660RIL: ignoring unsolicited response " +
                         origResponse);
                 return;
+            default:
+                // Rewind the Parcel
+                p.setDataPosition(dataPosition);
+
+                // Forward responses that we are not overriding to the super class
+                super.processUnsolicited(p);
+                return;
         }
+
         if (newResponse != origResponse) {
             riljLog("SamsungMSM8660RIL: remap unsolicited response from " +
                     origResponse + " to " + newResponse);
             p.setDataPosition(dataPosition);
             p.writeInt(newResponse);
+            p.setDataPosition(dataPosition);
+            super.processUnsolicited(p);
         }
-        p.setDataPosition(dataPosition);
-        super.processUnsolicited(p);
+
     }
 
     @Override
@@ -897,6 +926,34 @@ public class SamsungMSM8660RIL extends RIL implements CommandsInterface {
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
 
         send(rr);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void getCellInfoList(Message result) {
+        riljLog("getCellInfoList: not supported");
+        if (result != null) {
+            CommandException ex = new CommandException(
+                CommandException.Error.REQUEST_NOT_SUPPORTED);
+            AsyncResult.forMessage(result, null, ex);
+            result.sendToTarget();
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setCellInfoListRate(int rateInMillis, Message response) {
+        riljLog("setCellInfoListRate: not supported");
+        if (response != null) {
+            CommandException ex = new CommandException(
+                CommandException.Error.REQUEST_NOT_SUPPORTED);
+            AsyncResult.forMessage(response, null, ex);
+            response.sendToTarget();
+        }
     }
 
     // This call causes ril to crash the socket, stopping further communication

@@ -70,10 +70,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_2="" \
     persist.rild.nitz_short_ons_3=""
 
-# RIL Class
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SamsungMSM8660RIL
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -85,16 +81,17 @@ PRODUCT_PACKAGES += \
     lpm.rc \
     ueventd.qcom.rc
 
+# Audio config
+PRODUCT_COPY_FILES += \
+    device/samsung/msm8660-common/configs/audio_policy.conf:system/etc/audio_policy.conf
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
-    audio_policy.conf \
     audio.r_submix.default \
-    audio_policy.msm8660 \
     audio.primary.msm8660 \
     libaudio-resampler \
-    libaudioamp \
     libaudioutils
 
 # Camera

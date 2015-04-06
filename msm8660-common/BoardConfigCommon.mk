@@ -33,6 +33,7 @@ TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUEDROID_VENDOR_CONF := device/samsung/msm8660-common/bluetooth/vnd_msm8660.txt
+BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 
 # Camera
 BOARD_CAMERA_USE_MM_HEAP := true
@@ -75,7 +76,7 @@ TARGET_QCOM_MEDIA_VARIANT := caf
 TARGET_USES_LOGD := false
 
 # Power
-TARGET_USES_CM_POWERHAL := true
+TARGET_POWERHAL_VARIANT := cm
 
 # Qualcomm support
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
@@ -120,6 +121,7 @@ BOARD_SEPOLICY_UNION += \
     recovery.te \
     rild.te \
     rmt_storage.te \
+    secril.te \
     surfaceflinger.te \
     sysinit.te \
     system_app.te \

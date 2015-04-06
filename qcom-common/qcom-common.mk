@@ -24,7 +24,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
     debug.mdpcomp.logs=0 \
-    persist.hwc.mdpcomp.enable=true
+    persist.hwc.mdpcomp.enable=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=0
