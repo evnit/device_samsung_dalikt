@@ -92,16 +92,11 @@ BOARD_SEPOLICY_DIRS += \
     device/samsung/msm8660-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    app.te \
     bluetooth.te \
     bootanim.te \
     device.te \
-    domain.te \
-    drmserver.te \
     file.te \
     file_contexts \
-    healthd.te \
-    init.te \
     gamma_dev.te \
     genfs_contexts \
     init_shell.te \
@@ -131,11 +126,12 @@ BOARD_SEPOLICY_UNION += \
     ueventd.te \
     untrusted_app.te \
     vold.te \
-    wpa_socket.te \
     wpa.te
 
 # Wifi related defines
 BOARD_HAVE_SAMSUNG_WIFI := true
+BOARD_NO_APSME_ATTR := true
+BOARD_NO_WIFI_HAL := true
 BOARD_WLAN_DEVICE := bcmdhd
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_${BOARD_WLAN_DEVICE}
@@ -154,5 +150,4 @@ WIFI_DRIVER_MODULE_AP_ARG   := "firmware_path=/system/etc/wifi/bcmdhd_apsta.bin 
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-BOARD_VOLD_MAX_PARTITIONS := 28
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
