@@ -114,6 +114,7 @@ BOARD_SEPOLICY_UNION += \
     property_contexts \
     qmuxd.te \
     recovery.te \
+    healthd.te \
     rild.te \
     rmt_storage.te \
     secril.te \

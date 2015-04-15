@@ -86,11 +86,13 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    audio.usb.default \
     audio.r_submix.default \
+    audio.usb.default \
+    audio_policy.msm8660 \
     audio.primary.msm8660 \
-    libaudio-resampler \
-    libaudioutils
+    libaudioutils \
+    libdashplayer \
+    libaudio-resampler
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -105,8 +107,13 @@ PRODUCT_PACKAGES += \
     copybit.msm8660 \
     gralloc.msm8660 \
     hwcomposer.msm8660 \
+    memtrack.msm8660 \
+    lights.msm8660 \
     libgenlock \
-    memtrack.msm8660
+    libmemalloc \
+    liboverlay \
+    libqdutils \
+    libtilerenderer
 
 # GalaxyS2Settings
 PRODUCT_PACKAGES += \
