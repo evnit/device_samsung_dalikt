@@ -47,8 +47,6 @@ BOARD_HARDWARE_CLASS += device/samsung/msm8660-common/cmhw
 # Charger
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
-BOARD_CHARGER_ENABLE_SUSPEND := true
-BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # Display
 BOARD_EGL_CFG := device/samsung/msm8660-common/configs/egl.cfg
