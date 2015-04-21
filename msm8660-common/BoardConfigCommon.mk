@@ -47,6 +47,9 @@ BOARD_HARDWARE_CLASS += device/samsung/msm8660-common/cmhw
 # Charger
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
+## add for test
+BOARD_CHARGING_CMDLINE_NAME := "androidboot.bootchg"
+BOARD_CHARGING_CMDLINE_VALUE := "true"
 
 # Display
 BOARD_EGL_CFG := device/samsung/msm8660-common/configs/egl.cfg
@@ -106,6 +109,7 @@ BOARD_SEPOLICY_UNION += \
     mediaserver.te \
     mm-qcamerad.te \
     mpdecision.te \
+    netd.te \
     netmgrd.te \
     orientationd.te \
     panel_dev.te \

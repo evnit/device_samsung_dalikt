@@ -3,19 +3,6 @@
 
 rild.libpath=/system/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
-ril.subscription.types=NV,RUIM
-
-dev.pm.dyn_samplingrate=1
-
-# Disable GC freed lines
-dalvik.vm.debug.alloc=0
-
-#system props for the MM modules
-media.stagefright.enable-player=true
-media.stagefright.enable-http=true
-media.stagefright.enable-fma2dp=false
-media.stagefright.enable-aac=true
-media.stagefright.enable-qcp=true
 
 #
 # system props for the data modules
@@ -28,38 +15,13 @@ persist.data_netmgrd_nint=16
 #
 ro.emmc.sdcard.partition=17
 
-#system props for time-services
-persist.timed.enable=true
-
-# System props for audio
-persist.audio.fluence.mode=endfire
-persist.audio.vr.enable=false
-
-#
-# system prop for opengles version
-#
-# 131072 is decimal for 0x20000 to report version 2
-ro.opengles.version=131072
-
 #
 # System prop for sending transmit power request to RIL during WiFi hotspot on/off
 #
 ro.ril.transmitpower=true
 
-#
-# Needed to match behavior of stock rom
-# D/PHONE: mDoesRilSendMultipleCallRing=false
-#
-ro.telephony.call_ring.multiple=0
-
-# For 720x1280 panel
-ro.sf.lcd_density=320
-
 # Fields for custom RIL
 telephony.lteOnGsmDevice=1
-
-# System property for SIM
-persist.radio.apm_sim_not_pwdn=1
 
 # System prop for qmi adb log
 persist.radio.adb_log_on=1
@@ -69,4 +31,3 @@ persist.radio.add_power_save=1
 
 # System proverty snapshot disable
 persist.radio.snapshot_disabled=1
-
