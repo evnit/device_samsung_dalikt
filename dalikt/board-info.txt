@@ -1,1 +1,1 @@
-require version-baseband=E120K:KKMK1
+require version-baseband=E120K:KKMK1 | E120K:KKNE1
