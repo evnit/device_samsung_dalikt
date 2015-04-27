@@ -42,14 +42,13 @@ COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # CMHW
-BOARD_HARDWARE_CLASS += device/samsung/msm8660-common/cmhw
+BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 
 # Charger
-BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
-## add for test
-BOARD_CHARGING_CMDLINE_NAME := "androidboot.bootchg"
-BOARD_CHARGING_CMDLINE_VALUE := "true"
+BOARD_BATTERY_DEVICE_NAME := "battery"
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # Display
 BOARD_EGL_CFG := device/samsung/msm8660-common/configs/egl.cfg
@@ -86,7 +85,10 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 TARGET_USES_QCOM_BSP := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/samsung/msm8660-common/ril
+# BOARD_RIL_CLASS := ../../../device/samsung/msm8660-common/ril
+BOARD_PROVIDES_LIBRIL := true
+BOARD_MODEM_TYPE := xmm6262
+BOARD_RIL_CLASS := ../../../hardware/samsung/ril
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
