@@ -1,3 +1,7 @@
-type gamma_dev, file_type;
-type proc_bthc, fs_type, sysfs_type;
-type sysfs_bln, fs_type, sysfs_type;
+type firmware_mfc, file_type;
+type firmware_camera, file_type;
+
+type sensors_data_file, file_type, data_file_type;
+type sysfs_display, fs_type, sysfs_type;
+
+type efs_device_file, file_type;

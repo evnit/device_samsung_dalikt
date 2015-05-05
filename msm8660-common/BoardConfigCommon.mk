@@ -96,45 +96,30 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
     bluetooth.te \
-    bootanim.te \
     device.te \
+    domain.te \
     file.te \
     file_contexts \
-    gamma_dev.te \
-    genfs_contexts \
-    init_shell.te \
-    kernel.te \
-    keypad_dev.te \
-    macloader.te \
+    gpsd.te \
+    init.te \
     mediaserver.te \
-    mm-qcamerad.te \
-    mpdecision.te \
     netd.te \
-    netmgrd.te \
-    orientationd.te \
-    panel_dev.te \
-    platform_app.te \
-    power_dev.te \
-    property_contexts \
-    qmuxd.te \
-    recovery.te \
-    healthd.te \
+    nfc.te \
     rild.te \
-    rmt_storage.te \
-    secril.te \
+    servicemanager.te \
+    service_contexts \
     surfaceflinger.te \
     sysinit.te \
     system_app.te \
     system_server.te \
-    thermal-engine.te \
-    thermald.te \
     ueventd.te \
-    untrusted_app.te \
     vold.te \
-    wpa.te
+    wpa_supplicant.te
 
 # Wifi related defines
 BOARD_HAVE_SAMSUNG_WIFI := true
+BOARD_NO_APSME_ATTR := true
+BOARD_NO_WIFI_HAL := true
 BOARD_WLAN_DEVICE := bcmdhd
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_${BOARD_WLAN_DEVICE}
