@@ -86,8 +86,6 @@ TARGET_USES_QCOM_BSP := true
 
 # RIL
 # BOARD_RIL_CLASS := ../../../device/samsung/msm8660-common/ril
-BOARD_PROVIDES_LIBRIL := true
-BOARD_MODEM_TYPE := xmm6262
 BOARD_RIL_CLASS := ../../../hardware/samsung/ril
 
 # SELinux
@@ -137,8 +135,6 @@ BOARD_SEPOLICY_UNION += \
 
 # Wifi related defines
 BOARD_HAVE_SAMSUNG_WIFI := true
-BOARD_NO_APSME_ATTR := true
-BOARD_NO_WIFI_HAL := true
 BOARD_WLAN_DEVICE := bcmdhd
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_${BOARD_WLAN_DEVICE}
