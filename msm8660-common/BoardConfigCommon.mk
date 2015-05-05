@@ -85,8 +85,8 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 TARGET_USES_QCOM_BSP := true
 
 # RIL
-# BOARD_RIL_CLASS := ../../../device/samsung/msm8660-common/ril
-BOARD_RIL_CLASS := ../../../hardware/samsung/ril
+BOARD_RIL_CLASS := ../../../device/samsung/msm8660-common/ril
+# BOARD_RIL_CLASS := ../../../hardware/samsung/ril
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
