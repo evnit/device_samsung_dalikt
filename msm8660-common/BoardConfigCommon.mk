@@ -86,7 +86,7 @@ TARGET_USES_QCOM_BSP := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/samsung/msm8660-common/ril
-# BOARD_RIL_CLASS := ../../../hardware/samsung/ril
+#BOARD_RIL_CLASS := ../../../hardware/samsung/ril
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
@@ -95,31 +95,49 @@ BOARD_SEPOLICY_DIRS += \
     device/samsung/msm8660-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
+    app.te \
     bluetooth.te \
+    bootanim.te \
     device.te \
     domain.te \
+    drmserver.te \
     file.te \
     file_contexts \
-    gpsd.te \
+    healthd.te \
     init.te \
+    gamma_dev.te \
+    genfs_contexts \
+    init_shell.te \
+    kernel.te \
+    keypad_dev.te \
+    macloader.te \
     mediaserver.te \
-    netd.te \
-    nfc.te \
+    mm-qcamerad.te \
+    mpdecision.te \
+    netmgrd.te \
+    orientationd.te \
+    panel_dev.te \
+    platform_app.te \
+    power_dev.te \
+    property_contexts \
+    qmuxd.te \
+    recovery.te \
     rild.te \
-    servicemanager.te \
-    service_contexts \
+    rmt_storage.te \
     surfaceflinger.te \
     sysinit.te \
     system_app.te \
     system_server.te \
+    thermal-engine.te \
+    thermald.te \
     ueventd.te \
+    untrusted_app.te \
     vold.te \
-    wpa_supplicant.te
+    wpa_socket.te \
+    wpa.te
 
 # Wifi related defines
 BOARD_HAVE_SAMSUNG_WIFI := true
-BOARD_NO_APSME_ATTR := true
-BOARD_NO_WIFI_HAL := true
 BOARD_WLAN_DEVICE := bcmdhd
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_${BOARD_WLAN_DEVICE}

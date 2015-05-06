@@ -32,7 +32,7 @@ USE_CAMERA_STUB := true
 -include vendor/samsung/dalikt/BoardConfigVendor.mk
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := SHV-E120K,dalikt
+TARGET_OTA_ASSERT_DEVICE := SHV-E120K,dalikt,dali
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom kgsl.mmutype=gpummu usb_id_pin_rework=true no_console_suspend=true zcache msm_watchdog.appsbark=0 msm_watchdog.enable=1 loglevel=4 androidboot.selinux=permissive

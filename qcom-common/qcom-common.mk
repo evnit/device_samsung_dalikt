@@ -16,9 +16,9 @@
 DEVICE_PACKAGE_OVERLAYS += \
     device/samsung/qcom-common/overlay
 
-# System properties 	
+# System properties
 PRODUCT_PROPERTY_OVERRIDES += \
-    com.qc.hardware=true
+com.qc.hardware=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
