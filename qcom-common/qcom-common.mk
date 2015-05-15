@@ -16,12 +16,7 @@
 DEVICE_PACKAGE_OVERLAYS += \
     device/samsung/qcom-common/overlay
 
-# System properties
 PRODUCT_PROPERTY_OVERRIDES += \
-com.qc.hardware=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.egl.hw=1 \
     debug.sf.hw=1 \
     debug.mdpcomp.logs=0 \
     persist.hwc.mdpcomp.enable=false
@@ -32,9 +27,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
-    setup_fs \
-    fsck.f2fs \
-    mkfs.f2fs
+    setup_fs
 
 # Charger images
 PRODUCT_PACKAGES += \

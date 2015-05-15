@@ -84,9 +84,10 @@ service console /system/bin/sh
     class core
     console
 
-service charger /charger
-    class core
-    user root
+service charger /sbin/healthd -c
+    class charger
+    critical
+    seclabel u:r:healthd:s0
 
 # Used to disable USB when switching states
 on property:sys.usb.config=none

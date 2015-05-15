@@ -41,7 +41,8 @@ PRODUCT_COPY_FILES += \
 # System properties
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    persist.sys.usb.config=mtp
+    persist.sys.usb.config=mtp \
+    ro.enable_boot_charger_mode=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
@@ -75,6 +76,7 @@ PRODUCT_PACKAGES += \
     init.qcom.mdm_links.sh \
     init.qcom.modem_links.sh \
     init.qcom.rc \
+    init.qcom.power.rc \
     init.qcom.syspart_fixup.sh \
     lpm.rc \
     ueventd.qcom.rc

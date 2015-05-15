@@ -27,9 +27,6 @@ BOARD_HAVE_SAMSUNG_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 BOARD_QCOM_TUNNEL_LPA_ENABLED := true
 BOARD_QCOM_VOIP_ENABLED := true
-AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := false
-AUDIO_FEATURE_ENABLED_INCALL_MUSIC := false
-AUDIO_FEATURE_ENABLED_PROXY_DEVICE := false
 TARGET_QCOM_AUDIO_VARIANT := caf
 
 # Bluetooth
@@ -46,12 +43,15 @@ TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # CMHW
 BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
+BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
 # Charger
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+BOARD_CHARGER_RES := device/samsung/msm8660-common/charger
 
 # Display
 BOARD_EGL_CFG := device/samsung/msm8660-common/configs/egl.cfg
@@ -81,7 +81,7 @@ TARGET_QCOM_MEDIA_VARIANT := caf
 TARGET_USES_LOGD := false
 
 # Power
-TARGET_POWERHAL_VARIANT := cm
+TARGET_POWERHAL_VARIANT := qcom
 
 # Qualcomm support
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
@@ -98,18 +98,14 @@ BOARD_SEPOLICY_DIRS += \
     device/samsung/msm8660-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    app.te \
     bluetooth.te \
     bootanim.te \
     device.te \
-    domain.te \
-    drmserver.te \
     file.te \
     file_contexts \
-    healthd.te \
-    init.te \
     gamma_dev.te \
     genfs_contexts \
+    hostapd.te \
     init_shell.te \
     kernel.te \
     keypad_dev.te \
@@ -117,14 +113,14 @@ BOARD_SEPOLICY_UNION += \
     mediaserver.te \
     mm-qcamerad.te \
     mpdecision.te \
+    netd.te \
     netmgrd.te \
     orientationd.te \
     panel_dev.te \
     platform_app.te \
     power_dev.te \
-    property_contexts \
     qmuxd.te \
-    recovery.te \
+    radio.te \
     rild.te \
     rmt_storage.te \
     surfaceflinger.te \
@@ -132,11 +128,8 @@ BOARD_SEPOLICY_UNION += \
     system_app.te \
     system_server.te \
     thermal-engine.te \
-    thermald.te \
     ueventd.te \
-    untrusted_app.te \
     vold.te \
-    wpa_socket.te \
     wpa.te
 
 # Wifi related defines
