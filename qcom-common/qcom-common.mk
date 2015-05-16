@@ -32,3 +32,7 @@ PRODUCT_PACKAGES += \
 # Charger images
 PRODUCT_PACKAGES += \
     charger_res_images
+
+# For TWRP
+PRODUCT_COPY_FILES += \
+    device/samsung/qcom-common/recovery/root/etc/recovery.fstab:recovery/root/etc/recovery.fstab

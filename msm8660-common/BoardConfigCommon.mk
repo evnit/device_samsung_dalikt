@@ -27,7 +27,9 @@ BOARD_HAVE_SAMSUNG_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 BOARD_QCOM_TUNNEL_LPA_ENABLED := true
 BOARD_QCOM_VOIP_ENABLED := true
-TARGET_QCOM_AUDIO_VARIANT := caf
+AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := false
+AUDIO_FEATURE_ENABLED_INCALL_MUSIC := false
+AUDIO_FEATURE_ENABLED_PROXY_DEVICE := false
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -50,8 +52,6 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charg
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-BOARD_CHARGER_RES := device/samsung/msm8660-common/charger
 
 # Display
 BOARD_EGL_CFG := device/samsung/msm8660-common/configs/egl.cfg
@@ -61,7 +61,15 @@ TARGET_DISPLAY_INSECURE_MM_HEAP := true
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 TARGET_NO_ADAPTIVE_PLAYBACK := true
 TARGET_NO_INITLOGO := true
-TARGET_QCOM_DISPLAY_VARIANT := caf
+
+# Dlmalloc
+MALLOC_IMPL := dlmalloc
+
+# External apps on SD
+TARGET_EXTERNAL_APPS = sdcard0
+
+# Fonts
+EXTENDED_FONT_FOOTPRINT := true
 
 # GPS
 BOARD_HAVE_NEW_QC_GPS := true
@@ -75,7 +83,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-TARGET_QCOM_MEDIA_VARIANT := caf
+TARGET_NO_ADAPTIVE_PLAYBACK := true
 
 # Logging
 TARGET_USES_LOGD := false
@@ -89,7 +97,6 @@ TARGET_USES_QCOM_BSP := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/samsung/msm8660-common/ril
-#BOARD_RIL_CLASS := ../../../hardware/samsung/ril
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
