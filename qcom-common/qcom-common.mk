@@ -28,7 +28,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs \
-    fsck.f2fs \ 	
+    fsck.f2fs \
     mkfs.f2fs
 
 # Charger images
