@@ -21,8 +21,6 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_ARCH_VARIANT := armv7-a-neon
-# Charger
-# BOARD_CHARGER_RES := device/samsung/qcom-common/charger
 # CMHW
 BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 # Graphics
