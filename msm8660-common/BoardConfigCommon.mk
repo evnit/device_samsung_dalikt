@@ -51,8 +51,6 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charg
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
-BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
 # Display
 BOARD_EGL_CFG := device/samsung/msm8660-common/configs/egl.cfg
@@ -88,7 +86,8 @@ TARGET_NO_ADAPTIVE_PLAYBACK := true
 TARGET_USES_LOGD := false
 
 # Power
-TARGET_USES_CM_POWERHAL := true
+#TARGET_USES_CM_POWERHAL := true
+TARGET_POWERHAL_VARIANT := qcom
 
 # Qualcomm support
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
@@ -104,11 +103,16 @@ BOARD_SEPOLICY_DIRS += \
     device/samsung/msm8660-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
+    app.te \
     bluetooth.te \
     bootanim.te \
     device.te \
+    domain.te \
+    drmserver.te \
     file.te \
     file_contexts \
+    healthd.te \
+    init.te \
     gamma_dev.te \
     genfs_contexts \
     hostapd.te \
@@ -136,7 +140,8 @@ BOARD_SEPOLICY_UNION += \
     thermal-engine.te \
     ueventd.te \
     vold.te \
-    wpa.te
+    wpa.te \
+    wpa_socket.te
 
 # Wifi related defines
 BOARD_HAVE_SAMSUNG_WIFI := true

@@ -324,7 +324,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf -N \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
     -I/system/etc/wifi/p2p_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 \
+    -puse_p2p_group_interface=1 \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT
@@ -396,10 +396,10 @@ service quipc_main /system/bin/quipc_main
     group net_admin wifi inet gps
     disabled
 
-service fm_dl /system/bin/setprop hw.fm.init 1
+service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
     user root
-    group system fm_radio
+    group system qcom_oncrpc
     disabled
     oneshot
 
@@ -459,6 +459,7 @@ on property:sys.boot_completed=1
     chown system system /sys/devices/platform/rs300100a7.65536/sync_sts
     write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
     start mpdecision
+    write /sys/kernel/msm_thermal/conf/start 1
 
 #service abld /system/bin/mm-abl-daemon
 #    class late_start
