@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-**
-** Copyright 2011, The Android Open Source Project
+** Copyright (C) 2014 ParanoidAndroid Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -17,11 +16,9 @@
 ** limitations under the License.
 */
 -->
-<resources>
-    <string-array name="keypress_vibration_durations" translatable="false">
-        <!-- Build condition,duration_in_milliseconds -->
-        <item>MANUFACTURER=qcom,5</item>
-        <!-- Default value for unknown device -->
-        <item>,5</item>
-    </string-array>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Pie controls dimensions -->
+    <!--<dimen name="pie_clock_size">50dp</dimen>-->
+    <!--<dimen name="pie_am_pm_size">12dp</dimen>-->
 </resources>

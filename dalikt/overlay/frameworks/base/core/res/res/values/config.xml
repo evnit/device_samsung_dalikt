@@ -76,38 +76,4 @@
 
     <!-- Minimum screen brightness allowed by the power manager. -->
     <integer name="config_screenBrightnessDim">20</integer>
-    
-    <!-- Device supports LED flashlight -->
-    <!--<bool name="config_enableTorch">true</bool>-->
-    
-    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveNotificationLed">true</bool>
-    
-    <!-- If supported, are dreams enabled? (by default) -->
-    <bool name="config_dreamsEnabledByDefault">false</bool>
-	
-	<!-- If true, the screen can be rotated via the accelerometer in all 4
-	rotations as the default behavior. -->
-	<bool name="config_allowAllRotations">true</bool>
-
-	<!-- If true, the direction rotation is applied to get to an application's requested
-	orientation is reversed. Normally, the model is that landscape is
-	clockwise from portrait; thus on a portrait device an app requesting
-	landscape will cause a clockwise rotation, and on a landscape device an
-	app requesting portrait will cause a counter-clockwise rotation. Setting
-	true here reverses that logic. -->
-	<bool name="config_reverseDefaultRotation">false</bool>
-
-	<!-- Disable lockscreen rotation by default -->
-	<bool name="config_enableLockScreenRotation">true</bool>
-
-	<!-- Device has a h/w rotation lock switch -->
-	<!--<bool name="config_hasRotationLockSwitch">false</bool>-->
-   
-    <!-- Doze: force using accelerometer as pick up sensor
-    <bool name="config_dozeUseAccelerometer">true</bool> -->
-<!-- Doze mode -->		
-	<string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>		
-	<integer name="config_screenBrightnessDoze">1</integer>
-	<bool name="config_dozeAfterScreenOff">true</bool>
 </resources>
